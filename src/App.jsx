@@ -1,9 +1,8 @@
 import React from "react";
-import { Router, Route, Switch } from "react-router-dom";
-import { ExternalApi,Loading,NavBar,Profile } from "./components";
+import { Route, Routes } from "react-router-dom";
+import { ExternalApi, Loading, NavBar, Profile } from "./components";
 import { Container } from "reactstrap";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-import history from "./utils/history";
 
 // styles
 import "./App.css";
@@ -33,28 +32,26 @@ const App = () => {
   }
 
   return (
-    <Router history={history}>
-      <div id="app" className="d-flex flex-column h-100">
-        <NavBar />
-        <Container className="flex-grow-1 mt-5">
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route
-              path="/profile"
-              component={withAuthenticationRequired(Profile, {
-                onRedirecting: () => <Loading />,
-              })}
-            />
-            <Route
-              path="/external-api"
-              component={withAuthenticationRequired(ExternalApi, {
-                onRedirecting: () => <Loading />,
-              })}
-            />
-          </Switch>
-        </Container>
-      </div>
-    </Router>
+    <div id="app" className="d-flex flex-column h-100">
+      <NavBar />
+      <Container className="flex-grow-1 mt-5">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/profile"
+            element={withAuthenticationRequired(Profile, {
+              onRedirecting: () => <Loading />,
+            })}
+          />
+          <Route
+            path="/external-api"
+            element={withAuthenticationRequired(ExternalApi, {
+              onRedirecting: () => <Loading />,
+            })}
+          />
+        </Routes>
+      </Container>
+    </div>
   );
 };
 

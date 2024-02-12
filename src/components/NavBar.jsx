@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { NavLink as RouterNavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Collapse, Container, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import { Collapse, Container, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Button, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const NavBar = () => {
@@ -25,13 +25,13 @@ export const NavBar = () => {
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
-                <NavLink tag={RouterNavLink} to="/" exact activeClassName="router-link-exact-active">
+                <NavLink to="/" activeclassname="router-link-exact-active">
                   Home
                 </NavLink>
               </NavItem>
               {isAuthenticated && (
                 <NavItem>
-                  <NavLink tag={RouterNavLink} to="/external-api" exact activeClassName="router-link-exact-active">
+                  <NavLink to="/external-api" activeclassname="router-link-exact-active">
                     External API
                   </NavLink>
                 </NavItem>
@@ -52,7 +52,7 @@ export const NavBar = () => {
                   </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem header>{user.name}</DropdownItem>
-                    <DropdownItem tag={RouterNavLink} to="/profile" className="dropdown-profile" activeClassName="router-link-exact-active">
+                    <DropdownItem to="/profile" className="dropdown-profile" activeclassname="router-link-exact-active">
                       <FontAwesomeIcon icon="user" className="mr-3" /> Profile
                     </DropdownItem>
                     <DropdownItem id="qsLogoutBtn" onClick={() => logoutWithRedirect()}>
@@ -81,15 +81,15 @@ export const NavBar = () => {
                 </NavItem>
                 <NavItem>
                   <FontAwesomeIcon icon="user" className="mr-3" />
-                  <RouterNavLink to="/profile" activeClassName="router-link-exact-active">
+                  <NavLink to="/profile" activeclassname="router-link-exact-active">
                     Profile
-                  </RouterNavLink>
+                  </NavLink>
                 </NavItem>
                 <NavItem>
                   <FontAwesomeIcon icon="power-off" className="mr-3" />
-                  <RouterNavLink to="#" id="qsLogoutBtn" onClick={() => logoutWithRedirect()}>
+                  <NavLink to="#" id="qsLogoutBtn" onClick={() => logoutWithRedirect()}>
                     Log out
-                  </RouterNavLink>
+                  </NavLink>
                 </NavItem>
               </Nav>
             )}
