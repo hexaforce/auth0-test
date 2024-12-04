@@ -20,7 +20,6 @@ export const useApi = (url, options) => {
           ...fetchOptions,
           headers: {
             ...fetchOptions.headers,
-            // Add the Authorization header to the existing headers
             Authorization: `Bearer ${accessToken}`,
           },
         });

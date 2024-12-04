@@ -1,7 +1,5 @@
 import { useApi } from "./use-api";
-import React from "react";
-import { Loading } from "./Loading";
-import { Error } from "./Error";
+import { Loading, Error } from "./Components";
 
 const PORT = import.meta.env.VITE_API_PORT || 3001;
 
