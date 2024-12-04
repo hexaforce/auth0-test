@@ -32,8 +32,8 @@ export function Users() {
         </tr>
       </thead>
       <tbody>
-        {users!.map(
-          ({ name, email }: { name: string; email: string }, i: number) => (
+        {users.map(
+          ({ name, email }, i) => (
             <tr key={i}>
               <td>{name}</td>
               <td>{email}</td>

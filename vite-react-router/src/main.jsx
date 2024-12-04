@@ -7,10 +7,10 @@ import { BrowserRouter, useNavigate } from 'react-router-dom';
 const Auth0ProviderWithRedirectCallback = ({
   children,
   ...props
-}: PropsWithChildren<Auth0ProviderOptions>) => {
+}) => {
   const navigate = useNavigate();
 
-  const onRedirectCallback = (appState?: AppState) => {
+  const onRedirectCallback = (appState) => {
     navigate((appState && appState.returnTo) || window.location.pathname);
   };
 
