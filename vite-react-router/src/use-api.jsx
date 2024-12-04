@@ -44,10 +44,10 @@ export const useApi = (url, options) => {
 };
 
 export const ApolloProviderWithToken = ({ children, ...props }) => {
+  const { uri, audience, scope } = props;
   const { getAccessTokenSilently } = useAuth0();
-  const httpLink = new HttpLink({ uri: import.meta.env.VITE_GRAPHQL_ENDPOINT });
+  const httpLink = new HttpLink({ uri });
   const authLink = setContext(async (_, { headers }) => {
-    const { audience, scope } = props;
     const accessToken = await getAccessTokenSilently({
       authorizationParams: { audience, scope },
     });

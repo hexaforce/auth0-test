@@ -30,6 +30,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         }}
       >
         <ApolloProviderWithToken
+          uri={import.meta.env.VITE_GRAPHQL_ENDPOINT}
           audience={import.meta.env.VITE_AUDIENCE}
           scope={'profile email read:users'}
         >
