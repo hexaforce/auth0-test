@@ -3,6 +3,7 @@ import { Route, Routes,useLocation, Link  } from 'react-router-dom';
 import './App.css';
 import { Loading, Error } from "./Components";
 import { Users } from './Users';
+import { Users2 } from './Users2';
 
 export function Nav() {
   const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
@@ -26,6 +27,14 @@ export function Nav() {
             }`}
           >
             Users
+          </Link>
+          <Link
+            to="/users2"
+            className={`nav-item nav-link${
+              pathname === '/users2' ? ' active' : ''
+            }`}
+          >
+            Users2
           </Link>
         </div>
       </div>
@@ -58,6 +67,8 @@ export function Nav() {
 
 
 const ProtectedUsers = withAuthenticationRequired(Users);
+const ProtectedUsers2 = withAuthenticationRequired(Users2);
+
 
 function App() {
   const { isLoading, error } = useAuth0();
@@ -73,6 +84,7 @@ function App() {
       <Routes>
         <Route path="/" />
         <Route path="/users" element={<ProtectedUsers />} />
+        <Route path="/users2" element={<ProtectedUsers2 />} />
       </Routes>
     </>
   );
