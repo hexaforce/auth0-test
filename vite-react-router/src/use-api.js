@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-export const useApi = (
-  url: string,
-  options: any = {}
-): { error?: Error | null; loading: boolean; data?: any } => {
+export const useApi = (url, options) => {
   const { getAccessTokenSilently } = useAuth0();
   const [state, setState] = useState({
     error: null,
@@ -33,7 +30,7 @@ export const useApi = (
           error: null,
           loading: false,
         });
-      } catch (error: any) {
+      } catch (error) {
         setState({
           ...state,
           error,

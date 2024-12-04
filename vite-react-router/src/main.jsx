@@ -1,7 +1,7 @@
-import React, { PropsWithChildren } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom/client'
 import App from './App';
-import { Auth0Provider, AppState, Auth0ProviderOptions } from '@auth0/auth0-react';
+import { Auth0Provider } from '@auth0/auth0-react';
 import { BrowserRouter, useNavigate } from 'react-router-dom';
 
 const Auth0ProviderWithRedirectCallback = ({
@@ -21,7 +21,7 @@ const Auth0ProviderWithRedirectCallback = ({
   );
 };
 
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <Auth0ProviderWithRedirectCallback
@@ -37,5 +37,4 @@ ReactDOM.render(
       </Auth0ProviderWithRedirectCallback>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root')
 );
